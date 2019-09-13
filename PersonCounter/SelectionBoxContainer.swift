@@ -35,7 +35,7 @@ class SelectionBoxContainer: UIView {
 		context.addRects(boundingBoxes)
 		context.setLineWidth(5)
 
-		UIColor.red.setStroke()
+		tintColor.setStroke()
 
 		context.strokePath()
 	}

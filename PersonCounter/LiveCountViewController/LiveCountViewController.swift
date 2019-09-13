@@ -47,6 +47,8 @@ class LiveCountViewController: UIViewController {
 
 		countLabelView.layer.cornerRadius = 10
 		countLabelView.clipsToBounds = true
+
+		deviceRotated()
 	}
 
 	override var shouldAutorotate: Bool {

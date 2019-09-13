@@ -39,7 +39,11 @@ extension LiveCountViewController: UIGestureRecognizerDelegate {
 		cameraLayer = AVCaptureVideoPreviewLayer(session: captureSession)
 		cameraLayer.videoGravity = .resizeAspectFill
 
-		cameraLayer.frame = view.bounds
+		// ajust the frame to always use portrait
+		let width = min(view.bounds.width, view.bounds.height)
+		let height = max(view.bounds.width, view.bounds.height)
+		let frame = CGRect(x: 0, y: 0, width: width, height: height)
+		cameraLayer.frame = frame
 		view.layer.insertSublayer(cameraLayer, at: 0)
 
 		// start session

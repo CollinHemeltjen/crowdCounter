@@ -26,6 +26,8 @@ extension LiveCountViewController: AVCaptureVideoDataOutputSampleBufferDelegate 
 
 		// perform detection
 		do {
+			let sequenceHandler = VNSequenceRequestHandler()
+
 			try sequenceHandler.perform(
 				[detectFaceRequest],
 				on: imageBuffer,

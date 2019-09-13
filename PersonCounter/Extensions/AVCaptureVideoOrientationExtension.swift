@@ -21,6 +21,7 @@ extension AVCaptureVideoOrientation {
 		}
 	}
 
+	//swiftlint:disable identifier_name
 	init(ui: UIInterfaceOrientation) {
 		switch ui {
 		case .landscapeRight:       self = .landscapeRight
