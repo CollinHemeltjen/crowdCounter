@@ -11,8 +11,7 @@ import AVFoundation
 import Vision
 
 class LiveCountViewController: UIViewController {
-
-	@IBOutlet weak var boxView: SelectionBoxContainer!
+	@IBOutlet weak var faceRectangleDisplayView: SelectionBoxContainer!
 
 	var sequenceHandler = VNSequenceRequestHandler()
 
@@ -48,7 +47,7 @@ class LiveCountViewController: UIViewController {
 		countLabelView.layer.cornerRadius = 10
 		countLabelView.clipsToBounds = true
 
-		deviceRotated()
+		deviceRotated() // call this once to make sure we have the right rotation on viewLoad
 	}
 
 	override var shouldAutorotate: Bool {

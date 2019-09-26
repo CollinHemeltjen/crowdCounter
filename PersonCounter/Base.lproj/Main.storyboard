@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iKe-5O-zbe">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iKe-5O-zbe">
+    <device id="retina6_1" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -64,7 +62,7 @@
         <!--Live Count View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LiveCountViewController" customModule="PersonCounter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="BYZ-38-t0r" customClass="LiveCountViewController" customModule="PersonCounter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -154,18 +152,19 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Qjt-We-lEn"/>
                     <connections>
                         <outlet property="backButton" destination="ojA-06-vLA" id="FWb-7V-cvB"/>
-                        <outlet property="boxView" destination="pPJ-BD-SfR" id="lfc-BW-GQb"/>
                         <outlet property="countLabel" destination="jiC-DS-ta8" id="UDU-XS-LBz"/>
                         <outlet property="countLabelStackView" destination="fXN-MK-zwL" id="XHR-mF-VA5"/>
                         <outlet property="countLabelView" destination="7gi-GS-Mps" id="eeP-6A-upI"/>
+                        <outlet property="faceRectangleDisplayView" destination="pPJ-BD-SfR" id="DlQ-nZ-Xr5"/>
                         <outlet property="rotateCameraButton" destination="RdF-10-LZc" id="oY0-vR-gzD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="777" y="698"/>
+            <point key="canvasLocation" x="777" y="870"/>
         </scene>
         <!--Image Count View Controller-->
         <scene sceneID="rOs-lx-s0j">
@@ -176,8 +175,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="37p-e9-mOV">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q1U-FP-UHH" customClass="SelectionBoxContainer" customModule="PersonCounter" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ah0-MI-fa1">
                                 <rect key="frame" x="324" y="74" width="60" height="60"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="er2-N0-bKM">
@@ -193,6 +197,9 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="90b-S5-XjM">
+                                                    <rect key="frame" x="12" y="16.5" width="20" height="0.0"/>
+                                                </activityIndicatorView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gqZ-q6-Iaw">
                                                     <rect key="frame" x="12.5" y="13.5" width="19" height="36"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
@@ -228,24 +235,28 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="37p-e9-mOV" firstAttribute="leading" secondItem="eyl-lg-R3l" secondAttribute="leading" id="5Ok-mO-Esb"/>
+                            <constraint firstItem="37p-e9-mOV" firstAttribute="leading" secondItem="x7t-vN-V4u" secondAttribute="leading" id="5Ok-mO-Esb"/>
                             <constraint firstItem="eyl-lg-R3l" firstAttribute="trailing" secondItem="Ah0-MI-fa1" secondAttribute="trailing" constant="30" id="6Wq-Ef-BdF"/>
                             <constraint firstItem="DgG-cn-Jff" firstAttribute="leading" secondItem="eyl-lg-R3l" secondAttribute="leading" constant="30" id="Iep-aT-We8"/>
-                            <constraint firstItem="eyl-lg-R3l" firstAttribute="trailing" secondItem="37p-e9-mOV" secondAttribute="trailing" id="QSu-ci-Jep"/>
-                            <constraint firstItem="eyl-lg-R3l" firstAttribute="bottom" secondItem="37p-e9-mOV" secondAttribute="bottom" id="Tvr-2B-jiv"/>
-                            <constraint firstItem="37p-e9-mOV" firstAttribute="top" secondItem="eyl-lg-R3l" secondAttribute="top" id="gjE-Sq-Hfs"/>
+                            <constraint firstAttribute="trailing" secondItem="37p-e9-mOV" secondAttribute="trailing" id="QSu-ci-Jep"/>
+                            <constraint firstAttribute="bottom" secondItem="37p-e9-mOV" secondAttribute="bottom" id="Tvr-2B-jiv"/>
+                            <constraint firstItem="37p-e9-mOV" firstAttribute="top" secondItem="x7t-vN-V4u" secondAttribute="top" id="gjE-Sq-Hfs"/>
                             <constraint firstItem="eyl-lg-R3l" firstAttribute="bottom" secondItem="DgG-cn-Jff" secondAttribute="bottom" constant="30" id="hW8-7l-AkG"/>
                             <constraint firstItem="Ah0-MI-fa1" firstAttribute="top" secondItem="eyl-lg-R3l" secondAttribute="top" constant="30" id="jTm-Gu-9zL"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="eyl-lg-R3l"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicatorView" destination="90b-S5-XjM" id="yWD-JV-HDJ"/>
+                        <outlet property="boxView" destination="q1U-FP-UHH" id="xvn-dI-UsW"/>
+                        <outlet property="countLabel" destination="gqZ-q6-Iaw" id="On6-Nv-JK3"/>
+                        <outlet property="countLabelView" destination="Ah0-MI-fa1" id="KAR-Nk-12X"/>
                         <outlet property="imageView" destination="37p-e9-mOV" id="s2k-c5-dfk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="38y-gk-9I5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="777" y="-32"/>
+            <point key="canvasLocation" x="794" y="-43"/>
         </scene>
     </scenes>
     <resources>

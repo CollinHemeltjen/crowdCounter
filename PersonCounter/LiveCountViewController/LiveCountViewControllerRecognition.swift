@@ -20,20 +20,46 @@ extension LiveCountViewController: AVCaptureVideoDataOutputSampleBufferDelegate 
 		guard let imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {
 			return
 		}
+		// Create a request handler.
+		let sequenceRequestHandler = VNSequenceRequestHandler()
 
+		var request: VNImageBasedRequest
 		// create detection request
-		let detectFaceRequest = VNDetectFaceRectanglesRequest(completionHandler: detectedFace)
+		request = VNDetectFaceRectanglesRequest(completionHandler: detectedFace)
 
 		// perform detection
 		do {
-			let sequenceHandler = VNSequenceRequestHandler()
-
-			try sequenceHandler.perform(
-				[detectFaceRequest],
+			try sequenceRequestHandler.perform(
+				[request],
 				on: imageBuffer,
 				orientation: .downMirrored)
 		} catch {
 			print(error.localizedDescription)
+		}
+	}
+
+	func detectedFace(request: VNRequest, error: Error?) {
+		// get first result
+		guard
+			let results = request.results as? [VNFaceObservation]
+			else {
+				// clear view if nothing is detected
+				amountOfFaces = 0
+				faceRectangleDisplayView.clear()
+				return
+		}
+
+		amountOfFaces = results.count
+		// draw box
+		faceRectangleDisplayView.clear()
+
+		for result in results {
+			let box = result.boundingBox
+			self.faceRectangleDisplayView.boundingBoxes.append(self.convertToLayerRect(deviceRect: box))
+
+			DispatchQueue.main.async {
+				self.faceRectangleDisplayView.setNeedsDisplay()
+			}
 		}
 	}
 
@@ -45,31 +71,5 @@ extension LiveCountViewController: AVCaptureVideoDataOutputSampleBufferDelegate 
 
 		let size = (opp - origin).cgSize
 		return CGRect(origin: origin, size: size)
-	}
-
-	func detectedFace(request: VNRequest, error: Error?) {
-		// get first result
-		guard
-			let results = request.results as? [VNFaceObservation]
-			else {
-				// clear view if nothing is detected
-				amountOfFaces = 0
-				boxView.clear()
-				return
-		}
-
-		amountOfFaces = results.count
-		// draw box
-		boxView.clear()
-
-		for result in results {
-			let box = result.boundingBox
-			self.boxView.boundingBoxes.append(self.convertToLayerRect(deviceRect: box))
-
-			DispatchQueue.main.async {
-
-				self.boxView.setNeedsDisplay()
-			}
-		}
 	}
 }

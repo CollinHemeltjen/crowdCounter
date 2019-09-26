@@ -13,11 +13,13 @@
 		E31DC24F23229A0C00926E23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E31DC24E23229A0C00926E23 /* Assets.xcassets */; };
 		E31DC25223229A0C00926E23 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E31DC25023229A0C00926E23 /* LaunchScreen.storyboard */; };
 		E32FF1C1232B8F1F00D17336 /* Storyboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32FF1C0232B8F1F00D17336 /* Storyboarded.swift */; };
+		E34B255B233CF802000B2196 /* UIImageOrientationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34B255A233CF802000B2196 /* UIImageOrientationExtension.swift */; };
 		E3632E452322B0C70051BC63 /* SelectionBoxContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3632E442322B0C70051BC63 /* SelectionBoxContainer.swift */; };
 		E3632E472322C9830051BC63 /* CoreGraphicsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3632E462322C9830051BC63 /* CoreGraphicsExtensions.swift */; };
 		E3632E492323DC270051BC63 /* AVCaptureVideoOrientationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3632E482323DC270051BC63 /* AVCaptureVideoOrientationExtension.swift */; };
 		E367438123251CAC0008BCEC /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E367438023251CAC0008BCEC /* MenuViewController.swift */; };
 		E36743832325568E0008BCEC /* ImageCountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36743822325568E0008BCEC /* ImageCountViewController.swift */; };
+		E398E752233AA62E0027916E /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E398E751233AA62E0027916E /* UIImageViewExtension.swift */; };
 		E3B9EA6E232429F3004A0269 /* LiveCountViewControllerVideoInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B9EA6D232429F3004A0269 /* LiveCountViewControllerVideoInit.swift */; };
 		E3B9EA7023242B49004A0269 /* LiveCountViewControllerRecognition.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B9EA6F23242B49004A0269 /* LiveCountViewControllerRecognition.swift */; };
 /* End PBXBuildFile section */
@@ -31,11 +33,13 @@
 		E31DC25123229A0C00926E23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E31DC25323229A0C00926E23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E32FF1C0232B8F1F00D17336 /* Storyboarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboarded.swift; sourceTree = "<group>"; };
+		E34B255A233CF802000B2196 /* UIImageOrientationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageOrientationExtension.swift; sourceTree = "<group>"; };
 		E3632E442322B0C70051BC63 /* SelectionBoxContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionBoxContainer.swift; sourceTree = "<group>"; };
 		E3632E462322C9830051BC63 /* CoreGraphicsExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreGraphicsExtensions.swift; sourceTree = "<group>"; };
 		E3632E482323DC270051BC63 /* AVCaptureVideoOrientationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVCaptureVideoOrientationExtension.swift; sourceTree = "<group>"; };
 		E367438023251CAC0008BCEC /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		E36743822325568E0008BCEC /* ImageCountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCountViewController.swift; sourceTree = "<group>"; };
+		E398E751233AA62E0027916E /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 		E3B9EA6D232429F3004A0269 /* LiveCountViewControllerVideoInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveCountViewControllerVideoInit.swift; sourceTree = "<group>"; };
 		E3B9EA6F23242B49004A0269 /* LiveCountViewControllerRecognition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveCountViewControllerRecognition.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -75,7 +79,7 @@
 				E367438023251CAC0008BCEC /* MenuViewController.swift */,
 				E36743822325568E0008BCEC /* ImageCountViewController.swift */,
 				E3B9EA6C232405F7004A0269 /* LiveCountViewController */,
-				E3632E442322B0C70051BC63 /* SelectionBoxContainer.swift */,
+				E398E757233AB0360027916E /* Reusables */,
 				E3B9EA6B232405BC004A0269 /* Extensions */,
 				E31DC24B23229A0B00926E23 /* Main.storyboard */,
 				E31DC24E23229A0C00926E23 /* Assets.xcassets */,
@@ -93,11 +97,21 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
+		E398E757233AB0360027916E /* Reusables */ = {
+			isa = PBXGroup;
+			children = (
+				E3632E442322B0C70051BC63 /* SelectionBoxContainer.swift */,
+			);
+			path = Reusables;
+			sourceTree = "<group>";
+		};
 		E3B9EA6B232405BC004A0269 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				E3632E462322C9830051BC63 /* CoreGraphicsExtensions.swift */,
+				E398E751233AA62E0027916E /* UIImageViewExtension.swift */,
 				E3632E482323DC270051BC63 /* AVCaptureVideoOrientationExtension.swift */,
+				E34B255A233CF802000B2196 /* UIImageOrientationExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -210,6 +224,8 @@
 				E3632E452322B0C70051BC63 /* SelectionBoxContainer.swift in Sources */,
 				E3B9EA7023242B49004A0269 /* LiveCountViewControllerRecognition.swift in Sources */,
 				E31DC24823229A0B00926E23 /* AppDelegate.swift in Sources */,
+				E34B255B233CF802000B2196 /* UIImageOrientationExtension.swift in Sources */,
+				E398E752233AA62E0027916E /* UIImageViewExtension.swift in Sources */,
 				E3632E492323DC270051BC63 /* AVCaptureVideoOrientationExtension.swift in Sources */,
 				E32FF1C1232B8F1F00D17336 /* Storyboarded.swift in Sources */,
 				E367438123251CAC0008BCEC /* MenuViewController.swift in Sources */,

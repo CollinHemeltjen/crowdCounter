@@ -11,17 +11,26 @@ import UIKit
 
 class MenuViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
-	@IBAction func countFromImage(_ sender: Any) {
+	@IBAction func countFromImage(_ sender: UIButton) {
 		let alertController = UIAlertController(title: "How would you like to proceed?",
-												message: "Do you want to select an image, or take a picture?",
+												message: "What method do you want to use to select a picture?",
 												preferredStyle: .actionSheet)
-		alertController.addAction(UIAlertAction(title: "Camera", style: .default) { _ in
-			self.showImagePicker(sourceType: .camera)
-		})
+
+		// check if device has a functional camera before giving the option to use it
+		if UIImagePickerController.isSourceTypeAvailable(.camera) {
+			alertController.addAction(UIAlertAction(title: "Camera", style: .default) { _ in
+				self.showImagePicker(sourceType: .camera)
+			})
+		}
 		alertController.addAction(UIAlertAction(title: "Photo library", style: .default) { _ in
 			self.showImagePicker(sourceType: .photoLibrary)
 		})
 		alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+
+		// add source to support iPad
+		alertController.popoverPresentationController?.sourceView = self.view
+		alertController.popoverPresentationController?.sourceRect = sender.bounds
+
 		self.present(alertController, animated: true)
 	}
 

@@ -39,5 +39,4 @@ class SelectionBoxContainer: UIView {
 
 		context.strokePath()
 	}
-
 }
