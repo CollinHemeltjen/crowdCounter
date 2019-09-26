@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import AVFoundation
 
 class MenuViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -39,6 +40,26 @@ class MenuViewController: UIViewController, UIImagePickerControllerDelegate, UIN
 		imagePickerController.delegate = self
 		imagePickerController.sourceType = sourceType
 		self.present(imagePickerController, animated: true)
+	}
+
+	@IBAction func showLiveCounter(_ sender: Any) {
+		// check if device has camera
+		guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
+			showNoCameraAlert()
+			return
+		}
+
+		// start live count view controller
+		let viewController = LiveCountViewController.instantiate()
+		self.present(viewController, animated: true)
+	}
+
+	func showNoCameraAlert() {
+		let alertController = UIAlertController(title: "No camera found.",
+		message: "We couldn't find a camera to use.",
+		preferredStyle: .alert)
+		alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+		self.present(alertController, animated: true)
 	}
 
 	//swiftlint:disable vertical_parameter_alignment

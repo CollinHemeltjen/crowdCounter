@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 import Vision
 
-class LiveCountViewController: UIViewController {
+class LiveCountViewController: UIViewController, Storyboarded {
 	@IBOutlet weak var faceRectangleDisplayView: SelectionBoxContainer!
 
 	var sequenceHandler = VNSequenceRequestHandler()

@@ -25,7 +25,7 @@ extension LiveCountViewController: UIGestureRecognizerDelegate {
 			let camera = try AVCaptureDeviceInput(device: camera)
 			captureSession.addInput(camera)
 		} catch {
-			fatalError(error.localizedDescription)
+			
 		}
 
 		// define video data output
